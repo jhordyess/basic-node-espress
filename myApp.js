@@ -1,4 +1,5 @@
 let express = require("express");
+let bodyParser = require("body-parser");
 let app = express();
 
 const indexPath = __dirname + "/views/index.html";
@@ -24,6 +25,8 @@ const logger = (req, res, next) => {
 };
 
 app.use("/", logger);
+
+app.use("/", bodyParser.urlencoded({ extended: false }));
 
 app.use("/public", express.static(assetsPath));
 
