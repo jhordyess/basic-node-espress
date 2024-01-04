@@ -9,7 +9,10 @@ const index = (req, res) => {
 };
 
 const json = (req, res) => {
-  res.json({ message: "Hello json" });
+  const MESSAGE_STYLE = process.env.MESSAGE_STYLE;
+  let message = "Hello json";
+  message = MESSAGE_STYLE === "uppercase" ? message.toUpperCase() : message;
+  res.json({ message });
 };
 
 app.use("/public", express.static(assetsPath));
